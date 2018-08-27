@@ -53,15 +53,25 @@ body {
 .navbar-dark .navbar-brand
 {
     color:gold;
-    text-shadow: 2px 2px darkgrey
+    text-shadow: 2px 2px #434336;
+    font-size: 1.5rem;
 }
 
 .navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active
 {
     color:gold;
+    font-size: 1.25rem;
+    text-shadow: 2px 2px #434336;
 }
 
 .navbar-dark .navbar-nav :hover
 {
+    color:white;
+}
+
+.tagline 
+{
+    font-family: Tangerine, cursive;
+    font-style: italic;
     color:white;
 }
