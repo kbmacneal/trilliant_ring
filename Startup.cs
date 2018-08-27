@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebEssentials.AspNetCore.Pwa;
+using NetEscapades.AspNetCore.SecurityHeaders;
 
 namespace trill
 {
@@ -22,7 +22,7 @@ namespace trill
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public static void ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -31,12 +31,19 @@ namespace trill
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddSingleton(typeof(IHttpContextAccessor), typeof(HttpContextAccessor));
+            WebEssentials.AspNetCore.Pwa.PwaOptions opt = new WebEssentials.AspNetCore.Pwa.PwaOptions();
 
+            opt.OfflineRoute = "/";
+            opt.RegisterServiceWorker = true;
+            opt.RegisterWebmanifest = true;
+
+            services.AddProgressiveWebApp(opt, "manifest.json");
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public static void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -45,8 +52,21 @@ namespace trill
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
             }
+
+            var policyCollection = new HeaderPolicyCollection()
+            .AddXssProtectionEnabled()
+        .AddFrameOptionsDeny()
+        .AddXssProtectionBlock()
+        .AddContentTypeOptionsNoSniff()
+        .AddReferrerPolicyStrictOriginWhenCrossOrigin()
+        .RemoveServerHeader()
+        .AddContentSecurityPolicy(builder =>
+        {
+            builder.AddFrameAncestors().None();
+        });
+
+            app.UseSecurityHeaders(policyCollection);
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

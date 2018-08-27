@@ -1,15 +1,14 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@{ ViewData["Title"] = "Home Page"; }
 
 
 
- <div class="container-fluid">
-     <div class="row">
-         <h1 class="tagline">Why be human. Be Trill,</h1>
-<h4 class="tagline">and have the time of your life!</h4>
-     </div>
-     <div class="d-block mx-auto" style="height:50vh;">
+<div class="container-fluid">
+    <div class="row d-block mx-auto justify-content-center align-content-center text-center">
+        <h1 class="tagline">Why be human. Be Trill,</h1>
+        <br />
+        <h1 class="tagline">and have the time of your life!</h1>
+    </div>
+    <div class="d-block mx-auto" style="height:50vh;">
         <div id="carouselExampleIndicators" class="carousel slide h-100 w-100 border rounded" data-interval="false">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -20,11 +19,12 @@
 
                 <div class="carousel-item active">
                     <a asp-area="" asp-controller="Sermon" asp-action="Index">
-                        <img style="height:50vh;" class="img-fluid img-scaled align-middle d-block mx-auto" src="Assets/Ads/Body_alterations.png" alt="First slide">
+                        <img style="height:50vh;" class="img-fluid img-scaled align-middle d-block mx-auto" src="Assets/Ads/Body_alterations.png"
+                            alt="First slide">
                     </a>
 
                     <div class="carousel-caption d-md-block">
-                        <h5>Body Alterations</h5>
+                        <h5 class="card_title carousel_text ">Body Alterations</h5>
                     </div>
                 </div>
 
@@ -59,4 +59,4 @@
             </a>
         </div>
     </div>
- </div>
+</div>

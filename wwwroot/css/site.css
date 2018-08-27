@@ -167,3 +167,8 @@ blockquote {
   .spacing-padder {
       height: 25px;
   }
+
+  .carousel_text
+  {
+      color:white;
+  }
