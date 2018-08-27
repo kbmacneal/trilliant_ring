@@ -57,11 +57,15 @@ body {
     font-size: 1.5rem;
 }
 
-.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active
+.nav-link
 {
     color:gold;
     font-size: 1.25rem;
     text-shadow: 2px 2px #434336;
+}
+.navbar-dark .navbar-nav .nav-link
+{
+    color:gold;
 }
 
 .navbar-dark .navbar-nav :hover
