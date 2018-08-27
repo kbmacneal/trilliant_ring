@@ -14,7 +14,16 @@ namespace trill
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+             var host = new WebHostBuilder()
+                        .UseServer("Microsoft.AspNetCore.Server.Kestrel")
+                        .UseApplicationBasePath(Directory.GetCurrentDirectory())
+                        .UseDefaultConfiguration(args)
+                        .UseIISPlatformHandlerUrl()
+                        .UseStartup<Startup>()
+                        .UseUrls("http://localhost:5050")
+                        .Build();
+
+            host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
