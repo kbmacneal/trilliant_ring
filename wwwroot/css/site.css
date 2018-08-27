@@ -53,6 +53,7 @@ body {
 .navbar-dark .navbar-brand
 {
     color:gold;
+    text-shadow: 2px 2px darkgrey
 }
 
 .navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active
