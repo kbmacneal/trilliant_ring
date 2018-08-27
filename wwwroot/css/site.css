@@ -36,8 +36,21 @@ body {
     }
 }
 
+body {
+    background-color:black;
+}
+
 *
 {
     background-color: black;
     color:white;
+}
+
+.nav {
+    background-color: black
+}
+
+.navbar-brand
+{
+    color:gold;
 }
