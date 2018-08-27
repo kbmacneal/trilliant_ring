@@ -50,7 +50,17 @@ body {
     background-color: black
 }
 
-.navbar-brand
+.navbar-dark .navbar-brand
 {
     color:gold;
+}
+
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active
+{
+    color:gold;
+}
+
+.navbar-dark .navbar-nav :hover
+{
+    color:white;
 }
