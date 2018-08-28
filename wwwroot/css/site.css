@@ -187,3 +187,9 @@ blockquote {
   a {
     color: white;
 }
+
+.img-thumbnail
+{
+    border-color: gold;
+    border: 5px solid gold;
+}
