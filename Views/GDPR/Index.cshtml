@@ -1,0 +1,71 @@
+@model GDPRModel 
+@{ ViewData["Title"] = "GDPR"; } 
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <p>Under the General Data Protection Regulation (GDPR), all residents of the European Union have the right to control their
+      data. This site seeks to comply with all applicable regulations.</p>
+    <p>For more information on your rights under the GDPR, see </p>
+    <a href="https://www.eugdpr.org/gdpr-faqs.html" target="_blank">https://www.eugdpr.org/gdpr-faqs.html</a>
+    <p>This site does not store any personal information in cookies.</p>
+    <p>This site stores the following information for diagnostic purposes.</p>
+    <ul>
+      <li>
+        Public-facing IP address
+      </li>
+    </ul>
+    <p>
+      This site provides all or part of the above to the following third parties:
+      <ul>
+        <li>
+          NGINX Amplify 
+          <ul>
+            <li>
+              <a href="https://amplify.nginx.com" target="_blank">https://amplify.nginx.com</a>
+            </li>
+            <li>
+               <a href="https://amplify.nginx.com/terms/NGINX_Amplify_Terms_of_Service.pdf" target="_blank">https://amplify.nginx.com/terms/NGINX_Amplify_Terms_of_Service.pdf</a>
+            </li>
+            <li>
+              <a href="https://www.nginx.com/privacy-policy/" target="_blank">https://www.nginx.com/privacy-policy/</a>
+            </li>
+          </ul>
+          
+        </li>
+      </ul>
+    </p>
+    <p>If you wish to contact the site administrators to remove your personal information, use the form below. Information provided will be deleted from this site after your request is processed. Emails provided will be used solely to provide a confirmation of completion, then deleted from this site.</p>
+  </div>
+  <div class="row-fluid">
+    <div class="col-12">
+
+      <form asp-action="Index" asp-controller="GDPR">
+        <p>
+        <label for="EmailData">Email Address:</label>
+      </p>
+      <p>
+      <input type="text" asp-for="EmailData" />
+      </p>
+      <p>
+        <label for="IPData">IP Address</label>
+      </p>
+      <p><input type="text" asp-for="IPData" /></p>
+      <p>
+        <input type="checkbox" asp-for="CheckboxData" /> <label for="CheckboxData"> I am over the age of 13. I understand that my information stored on all webservers used to serve this website will
+          be permanently deleted, and that future visits to the site will constitute agreement to my data being collected
+          again.</label>
+          
+          </p>
+          <p>
+          <!-- @Html.ValidationMessageFor(m => m.CheckboxData, "Please Agree to the above terms", new { @class = "alert alert-warning" }) -->
+          </p>
+      <p>
+        <input class="btn btn-outline-secondary" type="submit" value="Submit" />
+      </p>  
+      
+      </form>
+      
+      
+    </div>
+  </div>
+</div>
