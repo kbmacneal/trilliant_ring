@@ -81,16 +81,21 @@ body {
     text-shadow: 2px 2px #434336;
 }
 
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active
+{
+    color: gold;
+}
+
 .navbar-dark .navbar-toggler
 {
-    border-color:white;
+    border-color:gold;
     opacity: .5;
 
 }
 
 .navbar-dark .navbar-toggler :hover
 {
-    border-color:black;
+    border-color:gold;
     background-color: gold;
     color:gold;
     
@@ -98,8 +103,8 @@ body {
 
 .navbar-toggler:not(:disabled):not(.disabled)
 {
-    background-color: gold;
-    color:gold;
+    background-color: none;
+    color:none;
 }
 
 
