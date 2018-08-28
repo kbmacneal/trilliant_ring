@@ -136,6 +136,7 @@ body {
     max-width: 100%;
     height: auto;
     object-fit: contain;
+    align-self: center;
 }
 
 .carousel-control-prev-icon,
@@ -220,5 +221,9 @@ a {
 }
 
 .card-img-top{
+    background-color:black;
+}
+
+.dropdown-menu{
     background-color:black;
 }
