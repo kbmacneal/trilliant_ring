@@ -190,8 +190,7 @@ blockquote {
 
 .img-thumbnail
 {
-    border-color: gold;
-    border: 5px solid gold;
+    border:none;
     background-color: black;
 }
 
@@ -204,4 +203,9 @@ blockquote {
     background-color: black;
     border: 2px solid gold;
     color:white;
+}
+
+.row
+{
+    margin-bottom: 5px;
 }
