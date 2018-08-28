@@ -185,11 +185,23 @@ blockquote {
   }
 
   a {
-    color: white;
+    color: gold !important;
 }
 
 .img-thumbnail
 {
     border-color: gold;
     border: 5px solid gold;
+    background-color: black;
+}
+
+.card {
+    border : 5px solid gold;
+}
+
+.btn-secondary
+{
+    background-color: black;
+    border: 2px solid gold;
+    color:white;
 }
