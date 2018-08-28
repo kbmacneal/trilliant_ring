@@ -177,3 +177,9 @@ blockquote {
   {
       color:white;
   }
+
+  .alert-success
+  {
+      background-color: black;
+      border-color:gold;
+  }
