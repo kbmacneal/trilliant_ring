@@ -210,3 +210,11 @@ blockquote {
 {
     margin-bottom: 5px;
 }
+
+.fa-trademark:before
+{
+    color:gold;
+    vertical-align: text-top;
+    font-size: .5rem;
+    padding-left:5px;
+}
