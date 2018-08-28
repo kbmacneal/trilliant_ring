@@ -186,6 +186,7 @@ blockquote {
 
   a {
     color: gold !important;
+    text-shadow: 2px 2px #434336 !important;
 }
 
 .img-thumbnail
