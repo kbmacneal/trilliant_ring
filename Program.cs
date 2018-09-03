@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,17 +8,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace trill
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args).UseUrls("http://localhost:5050").Build().Run();
+namespace trill {
+    public class Program {
+        public static void Main (string[] args) {
+            CreateWebHostBuilder (args).UseUrls ("http://localhost:5050").Build ().Run ();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder (string[] args) =>
+            WebHost.CreateDefaultBuilder (args)
+            .UseStartup<Startup> ();
     }
 }
