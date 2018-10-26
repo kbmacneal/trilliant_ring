@@ -5,19 +5,14 @@
 <script>
     function myIP() {
         if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
-        else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        else xmlhttp = new ActiveXObject("Microsoft.JSON");
 
-        xmlhttp.open("GET", "https://api.hostip.info/get_html.php", false);
+        xmlhttp.open("GET", "https://extreme-ip-lookup.com/json/", false);
         xmlhttp.send();
 
-        hostipInfo = xmlhttp.responseText.split("\n");
+        hostipInfo = JSON.parse(xmlhttp.responseText);
 
-        for (i = 0; hostipInfo.length >= i; i++) {
-            ipAddress = hostipInfo[i].split(":");
-            if (ipAddress[0] == "IP") return ipAddress[1].trim();
-        }
-
-        return "";
+        return hostipInfo.query;
     };
 </script>
 

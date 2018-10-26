@@ -6,8 +6,10 @@
     <div class="alert alert-dismissible alert-success" id="cookieConsent" role="alert">
         <div class="d-flex flex-column align-items-center">
             <p class="align-items-center">
-                We use cookies to provide a smooth browsing experience. Connection data is provided to a third party to monitor services. For
-                more information, click Learn More below. You consent to our cookies and the collection of certain information if you continue to use this site.
+                We use cookies to provide a smooth browsing experience. Connection data is provided to a third party to
+                monitor services. For
+                more information, click Learn More below. You consent to our cookies and the collection of certain
+                information if you continue to use this site.
                 Please accept the cookie policy before continuing.
             </p>
             <div class="navbar-right">
@@ -28,19 +30,14 @@
 
         function myIP() {
             if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
-            else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            else xmlhttp = new ActiveXObject("Microsoft.JSON");
 
-            xmlhttp.open("GET", "https://api.hostip.info/get_html.php", false);
+            xmlhttp.open("GET", "https://extreme-ip-lookup.com/json/", false);
             xmlhttp.send();
 
-            hostipInfo = xmlhttp.responseText.split("\n");
+            hostipInfo = JSON.parse(xmlhttp.responseText);
 
-            for (i = 0; hostipInfo.length >= i; i++) {
-                ipAddress = hostipInfo[i].split(":");
-                if (ipAddress[0] == "IP") return ipAddress[1].trim();
-            }
-
-            return "";
+            return hostipInfo.query;
         };
 
         (function () {
