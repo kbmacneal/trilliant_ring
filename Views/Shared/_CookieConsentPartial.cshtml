@@ -1,11 +1,14 @@
-﻿@using Microsoft.AspNetCore.Http.Features 
+﻿@using Microsoft.AspNetCore.Http.Features
 @{ var consentFeature = Context.Features.Get
-<ITrackingConsentFeature>(); var showBanner = !consentFeature?.CanTrack ?? false; var cookieString = consentFeature?.CreateConsentCookie(); } 
+<ITrackingConsentFeature>(); var showBanner = !consentFeature?.CanTrack ?? false; var cookieString =
+    consentFeature?.CreateConsentCookie(); }
     @if (showBanner) {
     <div class="alert alert-dismissible alert-success" id="cookieConsent" role="alert">
         <div class="d-flex flex-column align-items-center">
             <p class="align-items-center">
-                We use cookies to provide a smooth browsing experience. Secure Cookie technology is also used to mitigate certain attacks. Connection data is provided to a third party to monitor web services. For more information, click Learn More below. You consent to our cookies if you continue to use this site. You may review our policy below, otherwise please accept the cookie policy before continuing.
+                We use cookies to provide a smooth browsing experience. Connection data is provided to a third party to monitor services. For
+                more information, click Learn More below. You consent to our cookies and the collection of certain information if you continue to use this site.
+                Please accept the cookie policy before continuing.
             </p>
             <div class="navbar-right">
                 <a asp-controller="GDPR" asp-action="Index" class="btn btn-secondary">Learn More</a>
@@ -23,13 +26,45 @@
             }
         }
 
-        (function() {
-            document.querySelector("#cookieConsent button[data-cookie-string]").addEventListener("click", function(el) {
+        function myIP() {
+            if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+            else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+            xmlhttp.open("GET", "https://api.hostip.info/get_html.php", false);
+            xmlhttp.send();
+
+            hostipInfo = xmlhttp.responseText.split("\n");
+
+            for (i = 0; hostipInfo.length >= i; i++) {
+                ipAddress = hostipInfo[i].split(":");
+                if (ipAddress[0] == "IP") return ipAddress[1].trim();
+            }
+
+            return "";
+        };
+
+        (function () {
+            document.querySelector("#cookieConsent button[data-cookie-string]").addEventListener("click", function (
+                el) {
                 document.cookie = el.target.dataset.cookieString;
                 document.querySelector("#cookieConsent").classList.add("hidden");
                 hide(document.getElementById('cookieConsent'));
-            }, false);
 
+                var data = {
+                    EmailData: '',
+                    IPData: myIP(),
+                    CheckboxData: true
+                };
+
+                $.ajax({
+                    url: '/GDPR/CookieRegister',
+                    type: 'POST',
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(data),
+                });
+
+            }, false);
 
         })();
     </script>
