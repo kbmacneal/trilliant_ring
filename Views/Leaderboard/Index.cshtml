@@ -1,7 +1,15 @@
 @{ ViewData["Title"] = "Leaderboards"; }
-<p>
-    Credit Leaderboard:
-</p>
-<p>
-    @Html.Raw(Model.stats_text)
-</p>
+
+<div class="container">
+    <div class="row">
+        <div class="text-center col-lg-3 d-block mx-auto">
+            <p>
+                Credit Leaderboard:
+            </p>
+            <p>
+                @Html.Raw(Model.leaderboard)
+            </p>
+        </div>
+    </div>
+</div>
+
