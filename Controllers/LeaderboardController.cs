@@ -8,7 +8,7 @@ using trill.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace trill.Controllers {
-    public class SocialController : Controller {
+    public class LeaderboardController : Controller {
 
         [HttpGet]
         public ActionResult Index (apiModel model) {
