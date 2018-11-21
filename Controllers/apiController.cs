@@ -12,9 +12,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace trill.Controllers {
 
+    public class leaderboard
+    {
+        public string name {get;set;}
+        public long credits {get;set;}
+    }
+
     public class stats {
         int ID { get; set; }
-        public string leaderboard {get;set;}
+        public List<Controllers.leaderboard> leaderboard {get;set;}
 
         public static async Task update_stats (stats s) {
             // Open database (create new if file doesn't exist)
@@ -44,7 +50,7 @@ namespace trill.Controllers {
             if(stats == null)
             {
                 stats = new stats{
-                    leaderboard = "No stats at this time."
+                    leaderboard = new List<leaderboard> {new leaderboard {name="No stats at this time",credits=0}}
                 };
             }
 

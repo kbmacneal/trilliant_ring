@@ -12,9 +12,10 @@ namespace trill.Controllers {
     public class LeaderboardController : Controller {
 
         [HttpGet]
-        public ActionResult Index (apiModel model) {
-            model.leaderboard = HtmlUtils.DisplayMemo(Controllers.stats.get_stats().leaderboard);
-            return View (model);
+        public ActionResult Index () {
+
+            ViewBag.leaderboard_stats = Controllers.stats.get_stats().leaderboard;
+            return View ();
         }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace trill.Models {
     public class apiModel {
-        public string leaderboard{get;set;}
+        public List<Controllers.leaderboard> leaderboard{get;set;}
 
         public string api_key {get;set;}
     }
