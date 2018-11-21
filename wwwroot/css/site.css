@@ -227,3 +227,7 @@ a {
 .dropdown-menu{
     background-color:black;
 }
+
+.table thead th {
+    background-color: rgba(255,255,255,.5);
+}
