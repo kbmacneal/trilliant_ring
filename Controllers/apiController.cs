@@ -19,7 +19,7 @@ namespace trill.Controllers {
     }
 
     public class stats {
-        int ID { get; set; }
+        public int ID { get; set; }
         public List<Controllers.leaderboard> leaderboard {get;set;}
 
         public static async Task update_stats (stats s) {
@@ -117,6 +117,7 @@ namespace trill.Controllers {
             }
 
             stats s = new stats{
+                ID = 0,
                 leaderboard = model.leaderboard
             };
 
