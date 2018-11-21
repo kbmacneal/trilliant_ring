@@ -14,7 +14,7 @@
             @foreach (var item in ViewBag.leaderboard_stats)
             {
             <tr>
-                <td class="font-weight-bold"><text>tb&#33;</text>@Html.Raw(item.name)</td>
+                <td class="font-weight-bold">@Html.Raw(item.name)</td>
                 <td>@Html.Raw(item.credits)</td>
             </tr>
             }
