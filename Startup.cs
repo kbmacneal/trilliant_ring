@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NetEscapades.AspNetCore.SecurityHeaders;
-using WebEssentials.AspNetCore.Pwa;
 
 namespace trill {
     public class Startup {
@@ -27,14 +25,8 @@ namespace trill {
             });
 
             services.AddSingleton (typeof (IHttpContextAccessor), typeof (HttpContextAccessor));
-            WebEssentials.AspNetCore.Pwa.PwaOptions opt = new WebEssentials.AspNetCore.Pwa.PwaOptions ();
-
-            opt.OfflineRoute = "/";
-            opt.RegisterServiceWorker = true;
-            opt.RegisterWebmanifest = true;
-
-            services.AddProgressiveWebApp (opt, "manifest.json");
-            services.AddMvc ().SetCompatibilityVersion (CompatibilityVersion.Version_2_1);
+            
+            services.AddMvc ();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,18 +37,6 @@ namespace trill {
                 app.UseExceptionHandler ("/Home/Error");
             }
 
-            var policyCollection = new HeaderPolicyCollection ()
-                .AddXssProtectionEnabled ()
-                .AddFrameOptionsDeny ()
-                .AddXssProtectionBlock ()
-                .AddContentTypeOptionsNoSniff ()
-                .AddReferrerPolicyStrictOriginWhenCrossOrigin ()
-                .RemoveServerHeader ()
-                .AddContentSecurityPolicy (builder => {
-                    builder.AddFrameAncestors ().None ();
-                });
-
-            app.UseSecurityHeaders (policyCollection);
             app.UseStaticFiles ();
             app.UseCookiePolicy ();
 
