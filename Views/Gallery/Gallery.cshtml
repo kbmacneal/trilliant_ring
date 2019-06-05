@@ -1,9 +1,12 @@
 @{ ViewData["Title"] = "Trilliant Ring Gallery"; }
 
 <div class="container-fluid" style="font-size: 16pt;">
-    @Html.Partial("Dropdown")
+    @await Html.PartialAsync("Dropdown")
+    <div class="text-center">
+        <h5>If images do not appear, please disable your ad-blocker.</h5>
+    </div>
     <div class="text-center">
         @Html.Raw(Model.row_html)
     </div>
-    
+
 </div>
