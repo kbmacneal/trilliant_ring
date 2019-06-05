@@ -14,9 +14,9 @@ namespace trill.Controllers
     {
         public async Task<IActionResult> Ads (GalleryModel model)
         {
-            List<string> files = System.IO.Directory.GetFiles ("wwwroot/Assets/gifs/").ToList ();
+            List<string> files = System.IO.Directory.GetFiles ("wwwroot/Assets/Ads/").ToList ();
 
-            string prepend = "https://trilliantring.com/Assets/gifs/";
+            string prepend = "https://trilliantring.com/Assets/Ads/";
 
             SortedDictionary<string, string> filenames = new SortedDictionary<string, string> ();
 
