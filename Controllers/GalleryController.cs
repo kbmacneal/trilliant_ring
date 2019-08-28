@@ -12,7 +12,7 @@ namespace trill.Controllers
 {
     public class GalleryController : Controller
     {
-        public async Task<IActionResult> Ads (GalleryModel model)
+        public IActionResult Ads (GalleryModel model)
         {
             List<string> files = System.IO.Directory.GetFiles ("wwwroot/Assets/Ads/").ToList ();
 

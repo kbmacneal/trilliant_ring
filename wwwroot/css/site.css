@@ -231,3 +231,13 @@ a {
 .table thead th {
     background-color: rgba(255,255,255,.5);
 }
+
+.golden-drop-shadow
+{
+    box-shadow: 8px 10px gold;
+}
+
+.golden-outline
+{
+    border:2px gold solid;
+}
