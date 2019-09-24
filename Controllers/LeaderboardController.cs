@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using trill.Classes;
 using trill.Models;
 using Microsoft.AspNetCore.Mvc;
-using Westwind.Utilities;
 
 namespace trill.Controllers {
     public class LeaderboardController : Controller {

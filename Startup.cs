@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace trill {
     public class Startup {
@@ -35,15 +36,25 @@ namespace trill {
                 app.UseDeveloperExceptionPage ();
             } else {
                 app.UseExceptionHandler ("/Home/Error");
+                app.UseHsts ();
             }
 
             app.UseStaticFiles ();
             app.UseCookiePolicy ();
+            app.UseForwardedHeaders (new ForwardedHeadersOptions () {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor
+            });
 
-            app.UseMvc (routes => {
-                routes.MapRoute (
+            app.UseRouting();
+            app.UseEndpoints (endpoints => {
+                endpoints.MapControllers ();
+
+                endpoints.MapRazorPages ();
+
+                endpoints.MapControllerRoute (
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
             });
         }
     }
