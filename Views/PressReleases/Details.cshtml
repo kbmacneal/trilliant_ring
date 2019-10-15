@@ -1,0 +1,19 @@
+@model PressReleasesModel
+@using System.IO
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col d-block mx-auto">
+            @if(Model.is_PDF) {
+            <a class="d-block mx-auto text-center" href="https://trilliantring.com/@Model.file_location" target="_blank">Link to PDF</a>
+            <iframe src="https://docs.google.com/gview?url=@Model.file_location&embedded=true" class="d-block mx-auto w-100" style="height:100vh;" frameborder="0"></iframe> 
+            } 
+            
+            @if(Model.is_HTML) 
+            { 
+                @Html.Raw(File.ReadAllText(Model.file_location)) 
+            }
+            
+        </div>
+    </div>
+</div>

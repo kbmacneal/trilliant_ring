@@ -11,23 +11,19 @@ using trill.Models;
 namespace trill.Controllers {
     public class PressReleasesController : Controller {
         [HttpGet]
-        public IActionResult Index () {
-            return View ();
+        public async Task<IActionResult> Index () {
+            return await Task.Run (() => View ());
         }
 
         [HttpGet]
-        public IActionResult GetHTML () {
-            return View ();
-        }
+        public async Task<IActionResult> Details (string location, Boolean is_PDF = false, Boolean is_HTML = false) {
+            PressReleasesModel model = new PressReleasesModel () {
+            file_location = location,
+            is_PDF = is_PDF,
+            is_HTML = is_HTML
+            };
 
-        [HttpGet]
-        public IActionResult GetPDF () {
-            return View ();
-        }
-
-        [HttpGet]
-        public IActionResult GetMarkDown () {
-            return View ();
+            return await Task.Run (() => View (model));
         }
     }
 }
