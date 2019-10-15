@@ -1,5 +1,4 @@
 @model PressReleasesModel
-@using System.IO
 
 <div class="container-fluid">
     <div class="row">
@@ -11,7 +10,7 @@
             
             @if(Model.is_HTML) 
             { 
-                @Html.Raw(File.ReadAllText(Model.file_location)) 
+                @Html.Raw(new System.Net.WebClient().DownloadString(Model.file_location)) 
             }
             
         </div>
