@@ -16,14 +16,14 @@ namespace trill.Controllers {
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details (string location, Boolean is_PDF = false, Boolean is_HTML = false) {
+        public async Task<IActionResult> AcceptingPerfection () {
             PressReleasesModel model = new PressReleasesModel () {
-            file_location = location,
-            is_PDF = is_PDF,
-            is_HTML = is_HTML
+            file_location = "https://trilliantring.com/PressReleases/AcceptingPerfection.html",
+            is_PDF = false,
+            is_HTML = true
             };
 
-            return await Task.Run (() => View (model));
+            return await Task.Run (() => View ("Details", model));
         }
     }
 }
