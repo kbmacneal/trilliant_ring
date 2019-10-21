@@ -238,3 +238,8 @@ html, body {
 .inner>p {
     font-size: .8rem;
 }
+
+hr {
+    border-color: gold !important;
+    border: gold 1px solid;
+}
