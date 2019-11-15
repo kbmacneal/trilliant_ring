@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Hosting;
+using trill.Classes;
 
 namespace trill {
     public class Startup {
@@ -45,6 +46,8 @@ namespace trill {
             app.UseForwardedHeaders (new ForwardedHeadersOptions () {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor
             });
+
+            app.UseRobotsTxt(env);
 
             app.UseRouting();
             app.UseEndpoints (endpoints => {
