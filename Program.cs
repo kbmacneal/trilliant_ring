@@ -11,16 +11,19 @@ using Microsoft.Extensions.Logging;
 
 namespace trill {
     public class Program {
-        public static void Main (string[] args) {
-            CreateHostBuilder (args).Build ().Run ();
+        public static void Main(string[] args)
+        {
+            BuildWebHost(args).Run();
         }
 
-        public static IHostBuilder CreateHostBuilder (string[] args) =>
-            Host.CreateDefaultBuilder (args)
-            .ConfigureWebHostDefaults (webBuilder => {
-                webBuilder.UseKestrel ()
-                    .UseUrls ("http://localhost:5050")
-                    .UseStartup<Startup> ();
-            });
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+            .ConfigureKestrel(kestrel =>
+            {
+                kestrel.ListenLocalhost(5050);
+            })
+            .UseStartup<Startup>()
+            .UseKestrel()
+            .Build();
     }
 }
