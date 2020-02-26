@@ -25,5 +25,16 @@ namespace trill.Controllers {
 
             return await Task.Run (() => View ("Details", model));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> DuckInBath () {
+            PressReleasesModel model = new PressReleasesModel () {
+            file_location = "https://trilliantring.com/PressReleases/turd_in_the_punch_bowl.html",
+            is_PDF = false,
+            is_HTML = true
+            };
+
+            return await Task.Run (() => View ("Details", model));
+        }
     }
 }
